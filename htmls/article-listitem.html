@@ -1,0 +1,20 @@
+<article className='post'>
+  <header className='post-head'>
+    <h1 className='post-title'>
+      <Link to={`/post/${post.id}`}>{post.title}</Link>
+    </h1>
+  </header>
+  <div className='post-preview'>
+    <aside className='col-aside'>
+      <span className='post-meta'>
+        <i className='fa fa-calendar'></i>
+        <time className='post-item-time' dateTime={post.createdAt.toJSON()}>{post.createdAt.toDateString()}</time>
+        <Tag tags={post.tags}></Tag>
+      </span>
+    </aside>
+    <section className='post-excerpt'>
+      <p>{post.sumary}</p>
+      <Link className='btn' to={`/post/${post.id}`}>Read More</Link>
+    </section>
+  </div>
+</article>

@@ -1,0 +1,33 @@
+<div className="mill-detail">
+  <h1 className="post-title">{post.title}</h1>
+  <div className="mill-detail-content">
+    <section className="post-meta">
+      <span className="post-time">
+        <i className="fa fa-calendar"></i>
+        <time className="fulldate">{post.createdAt ? post.createdAt.toDateString() : ""}</time>
+    </span>
+      <Tag tags={post.tags}></Tag>
+    </section>
+    <div dangerouslySetInnerHTML={{ __html: post.html }} />
+    <footer className="post-footer">
+      <figure className="author-image">
+        <a className="img" href={user.ghLink} style={{backgroundImage: `url(${user.avatar}&s=120)`}}><span className="hidden">{user.login}</span></a>
+      </figure>
+      <section className="author">
+        <h4><Link to="/" query={{author: user.login}}>{user.login}</Link></h4>
+        <p>Read
+          <Link to="/" query={{author: user.login}}>more posts</Link> by this author.</p>
+        <div className="author-meta">
+          <i className="fa fa-link"><a href={post.ghLink}>{post.ghLink}</a></i>
+        </div>
+      </section>
+      <section className="share">
+        <h4>Share this post</h4>
+        <div className="share-icons">
+          { ["twitter", "facebook", "google-plus", "weibo" ].map((i, j) =>
+          <ShareButton key={j} publisher={i} url={url} content={post.title}/>) }
+        </div>
+      </section>
+    </footer>
+  </div>
+</div>
